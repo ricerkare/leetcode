@@ -1,7 +1,6 @@
 #include <regex.h>
 #include <stdio.h>
 #include <stdbool.h>
-#include <stdlib.h>
 #include <string.h>
 
 
@@ -32,17 +31,17 @@ int isMatch(char *str, char *pattern){
 	if (match_size != strlen(str)) {
 		return false;
 	}
-	else {
-		char match_str[match_size+1];
-		memcpy(match_str, str + (pmatch[0].rm_so), match_size);
-		match_str[match_size] = '\0';
+
+	char match_str[match_size+1];
+	memcpy(match_str, str + (pmatch[0].rm_so), match_size);
+	match_str[match_size] = '\0';
 		
-		regfree(&compiled);
+	regfree(&compiled);
 		
-		if (strlen(match_str) == strlen(str)) {
-			return (bool) !foo;
-		}
+	if (strlen(match_str) == strlen(str)) {
+		return (bool) !foo;
 	}
+
 	return 0;
 }
 
